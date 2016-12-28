@@ -1,0 +1,1 @@
+webpackJsonp([0],[,function(a,b,c){"use strict";var d=c(2);document.addEventListener("DOMContentLoaded",()=>{new d.a})},function(a,b){"use strict";b.a=class{constructor(){console.log("Hello World!")}}},,,function(a,b,c){a.exports=c(1)}],[5]);

@@ -1,0 +1,41 @@
+{
+  "name": "typescript-webpack-starter",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "webpack": "webpack --progress --colors --watch --config webpack.config.js",
+    "webpack-prod": "webpack --progress --colors --watch --config webpack.prod.config.js",
+    "webpack-es6": "webpack --progress --colors --watch --config webpack.es6.config.js",
+    "webpack-es6-prod": "webpack --progress --colors --watch --config webpack.es6.prod.config.js",
+    "serve": "http-server -a 0.0.0.0 -p 9000",
+    "dev-server-es6-prod": "webpack-dev-server --progress --colors --inline --config webpack.es6.prod.config.js",
+    "start": "npm run dev-server-es6-prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/audifaxdev/typescript-webpack-starter.git"
+  },
+  "keywords": [
+    "typescript",
+    "webpack"
+  ],
+  "author": {
+    "name": "AudifaxDev",
+    "email": "audifaxdev@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@types/es6-promise": "0.0.32",
+    "@types/lodash": "^4.14.43"
+  },
+  "devDependencies": {
+    "babel-core": "6.18.2",
+    "babel-preset-latest": "6.16.0",
+    "babili": "0.0.9",
+    "babili-webpack-plugin": "0.0.7",
+    "http-server": "0.9.0",
+    "ts-loader": "1.2.2",
+    "typescript": "^2.0.10",
+    "webpack": "2.1.0-beta.27"
+  }
+}
