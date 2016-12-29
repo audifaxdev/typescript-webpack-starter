@@ -9,10 +9,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "types": []
+    "types": [],
+    "jsx": "react"
   },
   "files": [
-    "app/main.ts"
+    "app/main.tsx"
   ],
   "exclude": [
     "node_modules",

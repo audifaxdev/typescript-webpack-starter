@@ -4,8 +4,8 @@ let webpack = require('webpack');
 
 module.exports = {
   entry: {
-    'main': ['./app/main.ts'],
-    'vendor': ['lodash']
+    'main': ['./app/main.tsx'],
+    'vendor': ['react', 'react-dom', 'lodash']
   },
 
   output: {
@@ -16,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: 'ts-loader?configFileName=tsconfig.es2015.json'
       }
     ]
@@ -27,7 +27,7 @@ module.exports = {
       'node_modules',
       path.resolve(__dirname, 'app')
     ],
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.tsx', '.js']
   },
 
   plugins: [

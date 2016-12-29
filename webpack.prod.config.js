@@ -4,8 +4,8 @@ let path = require('path');
 
 module.exports = {
   entry: {
-    'main': ['./app/main.ts'],
-    'vendor': ['lodash']
+    'main': ['./app/main.tsx'],
+    'vendor': ['react', 'react-dom', 'lodash']
   },
 
   output: {
@@ -15,7 +15,7 @@ module.exports = {
 
   module: {
     rules: [
-      { test: /\.ts$/, use: 'ts-loader' }
+      { test: /\.tsx?$/, use: 'ts-loader' }
     ]
   },
 
@@ -40,7 +40,7 @@ module.exports = {
       'node_modules',
       path.resolve(__dirname, 'app')
     ],
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.tsx', '.js']
   },
 
   devtool: false
