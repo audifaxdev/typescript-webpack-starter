@@ -2,15 +2,18 @@
 let BabiliPlugin = require("babili-webpack-plugin");
 let path = require('path');
 let webpack = require('webpack');
+let WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
+  context: path.resolve(__dirname, './app'),
   entry: {
-    'main': ['./app/main.tsx'],
-    'vendor': ['react', 'react-dom', 'lodash']
+    main: path.resolve(__dirname, './app/main.tsx'),
+    vendor: ['react', 'react-dom', 'react-router', 'lodash']
   },
 
   output: {
-    path: './dist',
+    path: path.resolve(__dirname, './dist/'),
+    publicPath: path.resolve(__dirname, './dist/'),
     filename: '[name].es6.prod.bundle.js'
   },
 
@@ -26,7 +29,7 @@ module.exports = {
   resolve: {
     modules: [
       'node_modules',
-      path.resolve(__dirname, 'app')
+      path.resolve(__dirname, './app')
     ],
     extensions: ['.ts', '.tsx', '.js']
   },
@@ -45,9 +48,13 @@ module.exports = {
       minChunks: Infinity,
       filename: '[name].es6.prod.bundle.js',
     }),
-  ],
-  externals: {
 
+    new WriteFilePlugin()
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, "./"),
+    compress: true,
+    hot: true,
+    port: 9000
   },
-  devtool: false
 };

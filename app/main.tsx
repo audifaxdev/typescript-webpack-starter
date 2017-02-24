@@ -1,9 +1,16 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import {render} from "react-dom";
+import {Router, Route, hashHistory} from "react-router";
 
-import { Application } from "./application";
+import { Home } from "./home";
+import { About } from "./about";
 
-ReactDOM.render(
-  <Application compiler="TypeScript" framework="React" />,
+render(
+  <div>
+    <Router history={hashHistory}>
+      <Route path="/" component={Home}/>
+      <Route path="/about" component={About}/>
+    </Router>
+  </div>,
   document.getElementById("my-app")
 );
