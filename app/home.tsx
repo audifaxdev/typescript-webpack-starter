@@ -1,13 +1,52 @@
 import * as React from 'react';
+import { connect } from 'react-redux'
 import { Nav } from './nav';
 
-export const Home = () => {
-  return (
-    <div>
-      <Nav slug="Home"/>
+import {increment, decrement} from './actions';
+
+interface HomeProps {
+  counter: number;
+  increment: () => void;
+  decrement: () => void;
+}
+
+interface HomeState {
+  counter: number;
+}
+
+function mapStateToProps(state) {
+  return {
+    counter: state
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    increment: () => dispatch(increment()),
+    decrement: () => dispatch(decrement()),
+  };
+}
+
+class Home extends React.Component<HomeProps, HomeState> {
+
+  render() {
+    return (
       <div>
-        <p>On the homepage.</p>
+        <Nav slug="Home"/>
+        <div>
+          <p>On the homepage.</p>
+
+          <h2>Todos</h2>
+          <h3>counter: {this.props.counter}</h3>
+          <button onClick={this.props.increment}>Increment</button>
+          <button onClick={this.props.decrement}>Decrement</button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
