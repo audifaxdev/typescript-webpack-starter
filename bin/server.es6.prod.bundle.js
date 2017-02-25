@@ -53717,7 +53717,7 @@ server.use((req, res) => {
     const appString = __WEBPACK_IMPORTED_MODULE_6_react_dom_server__["renderToString"](__WEBPACK_IMPORTED_MODULE_4_react__["createElement"](__WEBPACK_IMPORTED_MODULE_9__app__["a" /* App */], { store: store, history: history }));
     res.send(__WEBPACK_IMPORTED_MODULE_3_es6_template_strings_resolve_to_string___default()(indexHtml, {
         body: appString,
-        title: 'Server Side rendering ON',
+        title: 'Server Side rendering ON !',
         preloadedState: JSON.stringify(store.getState())
     }));
 });
