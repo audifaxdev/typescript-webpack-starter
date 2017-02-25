@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {Router, Route, browserHistory} from "react-router";
+import {Router, Route} from "react-router";
 
-import Home from "./home";
-import { About } from "./about";
+import Home from "./components/home";
+import { About } from "./components/about";
 import { Provider } from 'react-redux';
 
 export const App = (props) => (
   <Provider store={props.store}>
-    <Router history={browserHistory}>
+    <Router history={props.history}>
       <Route path="/" component={Home}/>
       <Route path="/about" component={About}/>
     </Router>

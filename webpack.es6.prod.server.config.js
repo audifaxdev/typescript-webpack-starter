@@ -1,8 +1,8 @@
 'use strict';
-let BabiliPlugin = require("babili-webpack-plugin");
-
-let path = require('path');
-let webpack = require('webpack');
+const BabiliPlugin = require("babili-webpack-plugin");
+const WebpackShellPlugin = require('webpack-shell-plugin');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   context: path.resolve(__dirname, './app'),
@@ -40,13 +40,16 @@ module.exports = {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new BabiliPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'server',
-      minChunks: Infinity,
-      filename: '[name].es6.prod.bundle.js',
-    }),
-
+    // new BabiliPlugin(),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'server',
+    //   minChunks: Infinity,
+    //   filename: '[name].es6.prod.bundle.js',
+    // }),
+    // new WebpackShellPlugin({
+    //   onBuildStart: ['echo "Build Starting'],
+    //   onBuildEnd: ['echo "Build Ended"']
+    // })
   ],
   target: 'node',
   node: {

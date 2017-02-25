@@ -4,9 +4,10 @@ import * as fs from 'fs';
 import compile from 'es6-template-strings/compile';
 import resolveToString from 'es6-template-strings/resolve-to-string';
 import * as React from 'react';
-import * as ReactServer from 'react-dom/server';
+import {createMemoryHistory} from 'react-router';
+import * as ReactDOMServer from 'react-dom/server';
 import { createStore } from 'redux';
-import myReducers from './reducers';
+import myReducers from './redux/reducers';
 import {App} from "./app";
 
 const indexFilePath = __dirname + '/index.html';
@@ -22,11 +23,14 @@ let indexHtml = compile(fs.readFileSync(indexFilePath));
 
 const server = express();
 
-server.use('/assets', express.static('assets'));
+server.use('/dist', express.static('dist'));
 
 server.use((req, res) => {
+  const history = createMemoryHistory(req.url);
   const store = createStore(myReducers);
-  const appString = ReactServer.renderToString(<App store={store}/>);
+  const appString = ReactDOMServer.renderToString(
+    <App store={store} history={history}/>
+  );
 
   //resolve template string
   res.send(resolveToString( indexHtml, {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux'
 import { Nav } from './nav';
 
-import {increment, decrement} from './actions';
+import {increment, decrement} from '../redux/actions';
 
 interface HomeProps {
   counter: number;
