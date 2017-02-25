@@ -46,10 +46,9 @@ module.exports = {
     //   minChunks: Infinity,
     //   filename: '[name].es6.prod.bundle.js',
     // }),
-    // new WebpackShellPlugin({
-    //   onBuildStart: ['echo "Build Starting'],
-    //   onBuildEnd: ['echo "Build Ended"']
-    // })
+    new WebpackShellPlugin({
+      onBuildEnd: ['echo "Starting server"', './node_modules/.bin/nodemon ./bin/server.es6.prod.bundle.js']
+    })
   ],
   target: 'node',
   node: {
