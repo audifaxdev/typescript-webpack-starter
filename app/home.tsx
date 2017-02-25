@@ -28,14 +28,13 @@ function mapDispatchToProps(dispatch) {
 }
 
 class Home extends React.Component<HomeProps, HomeState> {
-
   render() {
+    console.log('Home.props', this.props);
     return (
       <div>
         <Nav slug="Home"/>
         <div>
           <p>On the homepage.</p>
-
           <h2>Todos</h2>
           <h3>counter: {this.props.counter}</h3>
           <button onClick={this.props.increment}>Increment</button>

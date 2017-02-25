@@ -4,7 +4,7 @@ let webpack = require('webpack');
 
 module.exports = {
   entry: {
-    'main': ['./app/main.tsx'],
+    'main': ['./client/client.tsx'],
     'vendor': ['react', 'react-dom', 'lodash']
   },
 

@@ -4,7 +4,7 @@ let path = require('path');
 
 module.exports = {
   entry: {
-    'main': ['./app/main.tsx'],
+    'client': ['./app/client.tsx'],
     'vendor': ['react', 'react-dom', 'lodash']
   },
 

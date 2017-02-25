@@ -1,19 +1,18 @@
 'use strict';
 let BabiliPlugin = require("babili-webpack-plugin");
+
 let path = require('path');
 let webpack = require('webpack');
-let WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, './app'),
   entry: {
-    client: path.resolve(__dirname, './app/client.tsx'),
-    vendor: ['react', 'react-dom', 'react-router', 'lodash']
+    server: path.resolve(__dirname, './app/server.tsx'),
   },
 
   output: {
-    path: path.resolve(__dirname, './dist/'),
-    publicPath: path.resolve(__dirname, './dist/'),
+    path: path.resolve(__dirname, './bin/'),
+    publicPath: path.resolve(__dirname, './bin/'),
     filename: '[name].es6.prod.bundle.js'
   },
 
@@ -21,7 +20,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader?configFileName=tsconfig.es2015.json'
+        use: 'ts-loader?configFileName=tsconfig.server.es2015.json'
       }
     ]
   },
@@ -36,25 +35,21 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({
+      '__dirname': `"${__dirname}"`,
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-
     new BabiliPlugin(),
-
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
+      name: 'server',
       minChunks: Infinity,
       filename: '[name].es6.prod.bundle.js',
     }),
 
-    new WriteFilePlugin()
   ],
-  devServer: {
-    contentBase: path.join(__dirname, "./"),
-    compress: true,
-    hot: true,
-    port: 9000
-  },
+  target: 'node',
+  node: {
+    __dirname: true
+  }
 };

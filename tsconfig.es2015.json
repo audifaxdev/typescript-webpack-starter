@@ -13,10 +13,11 @@
     "jsx": "react"
   },
   "files": [
-    "app/main.tsx"
+    "app/client.tsx"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "bin"
   ]
 }
