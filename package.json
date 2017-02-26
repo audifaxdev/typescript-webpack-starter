@@ -1,5 +1,5 @@
 {
-  "name": "typescript-webpack-starter",
+  "name": "tsx-redux-webpack-starter-kit",
   "version": "1.0.0",
   "description": "",
   "main": "./bin/server.js",
