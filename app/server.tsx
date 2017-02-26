@@ -11,8 +11,8 @@ import { createStore } from 'redux';
 import myReducers from './redux/reducers';
 import {App} from "./app";
 
+const reactMustRender = ['/', 'index.html', 'index.htm', 'index'];
 const indexFilePath = __dirname + '/public/index.html';
-console.log(indexFilePath);
 
 if (!fs.existsSync(indexFilePath)) {
   console.log(indexFilePath+' not found');
@@ -22,19 +22,17 @@ if (!fs.existsSync(indexFilePath)) {
 //Precompile template string
 let indexHtml = compile(fs.readFileSync(indexFilePath));
 
+fs.watchFile(indexFilePath, () => {
+  console.log(indexFilePath + ' has changed : reloading...');
+  indexHtml = compile(fs.readFileSync(indexFilePath));
+});
+
 const server = express();
 
 let ReactServerMiddleware = (req, res, next) => {
-  console.log('ReactServerMiddleware');
 
-  const mapedPath = __dirname + '/public' + req.path;
-  console.log('ReactServerMiddleware : req.path = ', req.path);
-  console.log('ReactServerMiddleware : mapedPath = ', mapedPath);
-
-  const ignoreList = ['/', 'index.html', 'index.htm', 'index'];
-
-  if (!includes(ignoreList, req.path) && fs.existsSync(mapedPath)) {
-    console.log('ReactServerMiddleware : file exist');
+  //Check if we must render or otherwise if the file exist
+  if (!includes(reactMustRender, req.path) && fs.existsSync(__dirname + '/public' + req.path)) {
     return next();
   }
 
@@ -47,8 +45,8 @@ let ReactServerMiddleware = (req, res, next) => {
   //resolve template string
   let data = resolveToString( indexHtml, {
     body: appString,
-    title: 'Server Side rendering ON',
-    preloadedState: JSON.stringify(store.getState())
+    title: 'TS/React Server-side Rendering ON',
+    initialState: JSON.stringify(store.getState())
   });
   res.send(data);
 };

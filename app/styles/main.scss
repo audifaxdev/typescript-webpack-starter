@@ -1,5 +1,4 @@
-$mainColor: #fff;
-
-body {
-  background-color: $mainColor;
-}
+@import "variables";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap-compass";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";

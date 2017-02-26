@@ -4,35 +4,17 @@
     <meta charset="UTF-8">
     <title>${title} </title>
     <link rel="icon" type="image/x-icon" href="favicon.ico"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <!-- Optional theme -->
     <link rel="stylesheet" href="dist/styles.css">
-    <style>
-        * {
-
-        }
-        div.stats {
-            position: absolute;
-            z-index: 1;
-        }
-        canvas {
-            z-index: 0;
-        }
-    </style>
 </head>
 <body>
 <div id="my-app">${body}</div>
-<!--<script src="./dist/vendor.es5.bundle.js"></script>-->
-<!--<script src="./dist/main.es5.bundle.js"></script>-->
-<!--<script src="./dist/vendor.es5.prod.bundle.js"></script>-->
-<!--<script src="./dist/main.es5.prod.bundle.js"></script>-->
-<!--<script src="./dist/vendor.es6.bundle.js"></script>-->
-<!--<script src="./dist/main.es6.bundle.js"></script>-->
 <script src="./dist/vendor.bundle.js"></script>
 <script src="./dist/client.bundle.js"></script>
 <script>
   // WARNING: See the following for security issues around embedding JSON in HTML:
   // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-  window.__PRELOADED_STATE__ = ${preloadedState};
+  window.__REDUX_STATE__ = ${initialState};
 </script>
 </body>
 </html>

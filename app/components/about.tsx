@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { Nav } from './nav';
+import { MyNavBar } from './navbar';
 
 export const About = () => (
   <div>
-    <Nav slug="About"/>
-    <p>On the about page</p>
+    <MyNavBar slug="About"/>
+    <div className="container">
+      <p>On the about page</p>
+    </div>
   </div>
 );

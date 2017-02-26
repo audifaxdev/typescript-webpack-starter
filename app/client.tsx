@@ -6,9 +6,9 @@ import {App} from "./app";
 import { createStore } from 'redux';
 import myReducers from './redux/reducers';
 
-require("styles/main.scss");
+import "styles/main.scss";
 
-const store = createStore(myReducers, window['__PRELOADED_STATE__']);
+const store = createStore(myReducers, window['__REDUX_STATE__']);
 
 render(
   <App history={browserHistory} store={store}/>,

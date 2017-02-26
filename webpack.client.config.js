@@ -14,7 +14,7 @@ module.exports = {
   context: path.resolve(__dirname, './app'),
   entry: {
     client: path.resolve(__dirname, './app/client.tsx'),
-    vendor: ['react', 'react-dom', 'react-router', 'lodash'],
+    vendor: ['react', 'react-dom', 'react-router', 'lodash', 'react-bootstrap', 'react-router-bootstrap'],
   },
 
   output: {
@@ -34,12 +34,22 @@ module.exports = {
         loader: extractSass.extract({
           loader: [{
             loader: "css-loader"
-          }, {
-            loader: "sass-loader"
-          }],
+          },
+          {
+            loader: "resolve-url-loader"
+          },
+          {
+            loader: "sass-loader?sourceMap"
+          }
+          ],
           // use style-loader in development
           fallbackLoader: "style-loader"
         })
+      },
+      // Font Definitions
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'url-loader?name=/fonts/[name].[ext]'
       }
     ]
   },
