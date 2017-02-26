@@ -1,5 +1,5 @@
 'use strict';
-const BabiliPlugin = require("babili-webpack-plugin");
+const nodeExternals = require('webpack-node-externals');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const path = require('path');
 const webpack = require('webpack');
@@ -13,14 +13,14 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './bin/'),
     publicPath: path.resolve(__dirname, './bin/'),
-    filename: '[name].es6.prod.bundle.js'
+    filename: 'server.js'
   },
 
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader?configFileName=tsconfig.server.es2015.json'
+        use: 'ts-loader?configFileName=tsconfig.server.json'
       }
     ]
   },
@@ -47,10 +47,11 @@ module.exports = {
     //   filename: '[name].es6.prod.bundle.js',
     // }),
     new WebpackShellPlugin({
-      onBuildEnd: ['echo "Starting server"', './node_modules/.bin/nodemon ./bin/server.es6.prod.bundle.js']
+      // onBuildEnd: ['echo "Built finished, (Re)Starting server"', './node_modules/.bin/nodemon ./bin/server.js']
     })
   ],
   target: 'node',
+  externals: [nodeExternals()],
   node: {
     __dirname: true
   }
