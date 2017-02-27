@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/Users/audifax/projects/ys16-slider-component/bin";
+/******/ 	__webpack_require__.p = "/Users/audifax/projects/tsx-redux-webpack2-starter-kit/bin";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 18);
@@ -366,7 +366,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 const reactMustRender = ['/', 'index.html', 'index.htm', 'index'];
-const indexFilePath = "/Users/audifax/projects/ys16-slider-component" + '/public/index.html';
+const indexFilePath = "/Users/audifax/projects/tsx-redux-webpack2-starter-kit" + '/public/index.html';
 if (!__WEBPACK_IMPORTED_MODULE_1_fs__["existsSync"](indexFilePath)) {
     console.log(indexFilePath + ' not found');
     process.exit(1);
@@ -378,11 +378,12 @@ __WEBPACK_IMPORTED_MODULE_1_fs__["watchFile"](indexFilePath, () => {
 });
 const server = __WEBPACK_IMPORTED_MODULE_0_express__();
 let ReactServerMiddleware = (req, res, next) => {
-    if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["includes"])(reactMustRender, req.path) && __WEBPACK_IMPORTED_MODULE_1_fs__["existsSync"]("/Users/audifax/projects/ys16-slider-component" + '/public' + req.path)) {
+    if (!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_lodash__["includes"])(reactMustRender, req.path) && __WEBPACK_IMPORTED_MODULE_1_fs__["existsSync"]("/Users/audifax/projects/tsx-redux-webpack2-starter-kit" + '/public' + req.path)) {
         return next();
     }
-    const history = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_react_router__["createMemoryHistory"])(req.url);
+    const history = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_react_router__["createMemoryHistory"])();
     const store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8_redux__["createStore"])(__WEBPACK_IMPORTED_MODULE_9__redux_reducers__["a" /* default */]);
+    history.createLocation(req.url);
     const appString = __WEBPACK_IMPORTED_MODULE_7_react_dom_server__["renderToString"](__WEBPACK_IMPORTED_MODULE_5_react__["createElement"](__WEBPACK_IMPORTED_MODULE_10__app__["a" /* App */], { store: store, history: history }));
     let data = __WEBPACK_IMPORTED_MODULE_4_es6_template_strings_resolve_to_string_js___default()(indexHtml, {
         body: appString,

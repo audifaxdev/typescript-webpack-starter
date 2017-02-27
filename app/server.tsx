@@ -36,8 +36,11 @@ let ReactServerMiddleware = (req, res, next) => {
     return next();
   }
 
-  const history = createMemoryHistory(req.url);
+  const history = createMemoryHistory();
   const store = createStore(myReducers);
+
+  history.createLocation(req.url);
+
   const appString = ReactDOMServer.renderToString(
     <App store={store} history={history}/>
   );
@@ -48,6 +51,7 @@ let ReactServerMiddleware = (req, res, next) => {
     title: 'TS/React Server-side Rendering ON',
     initialState: JSON.stringify(store.getState())
   });
+
   res.send(data);
 };
 

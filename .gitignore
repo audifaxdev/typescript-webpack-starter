@@ -1,1 +1,10 @@
 ./node_modules/
+.idea
+.idea/dbnavigator.xml
+.idea/encodings.xml
+.idea/jsLibraryMappings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/tsx-redux-webpack2-starter-kit.iml
+.idea/vcs.xml
+.idea/workspace.xml
