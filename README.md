@@ -1,6 +1,6 @@
 # Typescript Webpack Starter
 
-Typescript 2 - Webpack 2 - Seed project with Tree Shaking enabled
+Typescript 2 - Webpack 2 - React - Redux - Boostrap : Seed project with Tree Shaking enabled
 
 ##Installation
 npm i
